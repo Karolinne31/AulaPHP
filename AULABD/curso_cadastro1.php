@@ -19,23 +19,21 @@
         {
             include "conexao.php";
 
-            $nome = $_REQUEST["nome"];
-            $cidade = $_REQUEST["cidade"];
-            $estado = $_REQUEST["estado"];
+            $nome = $_REQUEST[":nome"];
+            $coordenador = $_REQUEST[":coordenador"];
 
-            $sql = "insert into alunos (nome, cidade, estado) values (:nome, :cidade, :estado)";
+            $sql = "insert into cursos (nome, coordenador) values (:nome, :coordenador)";
 
             $result = $conexao->prepare($sql);
             $result->bindValue(":nome", $nome);
-            $result->bindValue(":cidade", $cidade);
-            $result->bindValue(":estado", $estado); 
+            $result->bindValue(":coordenador", $coordenador); 
             $result->execute();
 
-            echo "Aluno cadastrado com sucesso!<br>";
+            echo "Curso cadastrado com sucesso!<br>";
         }
     ?>
 
-        <a href="aluno_cadastro.php">Voltar</a>
+        <a href="curso_cadastro.php">Voltar</a>
     </div>
     
 </body>
